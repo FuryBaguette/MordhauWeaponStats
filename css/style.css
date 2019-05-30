@@ -154,6 +154,10 @@ table thead {
     position: absolute;
 }*/
 
+table tr, table th, .weaponNameBox {
+    cursor: pointer;
+}
+
 table td, th {
     text-align: left;
     padding: 0px 20px;
