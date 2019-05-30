@@ -1,0 +1,226 @@
+html {
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    margin-top: 0;
+    height: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+#container {
+    display: grid;
+    max-height: 100%;
+    height: 100%;
+}
+
+h1 {
+    text-align: left;
+    margin: 0;
+    flex: 1;
+}
+
+header {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #5C6BC0;
+    color: white;
+    display: flex;
+}
+
+header .links {
+    align-self: center;
+}
+
+header .links a, header .links a:hover, header .links a:active, header .links a:visited {
+    color: white;
+    position: relative;
+}
+
+header .links i {
+    font-size: 30px;
+}
+
+footer {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    padding: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #5C6BC0;
+    color: white;
+    text-align: center;
+}
+
+#content {
+    overflow: hidden;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    display: flex;
+}
+
+#leftSide,
+#rightSide {
+    position: relative;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+#leftSide {
+    border-right: 1px dashed;
+    flex: 1;
+}
+
+#rightSide {
+    flex: 2;
+}
+
+#rightSide .selectedItemsContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.weaponNameBox {
+    background-color: #EEEEEE;
+    border-left: 2px solid black;
+    white-space: nowrap;
+    color: black;
+    padding: 5px 0;
+    text-align: center;
+    width: 200px;
+    margin-bottom: 3px;
+    margin-right: 3px;
+    z-index: 5;
+}
+
+#leftSide .overlay,
+#rightSide .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    opacity: 0.8;
+}
+
+#leftSide .overlay {
+    background-color: red;
+}
+
+#rightSide .overlay {
+    background-color: green;
+}
+
+#rightSide .infoContainer {
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.title-box {
+    display: inline-block;
+    background-color: #374073;
+    color: white;
+    padding: 0 10px;
+    margin-left: 5px;
+    margin-top: 10px;
+    min-width: 100px;
+    text-align: center;
+}
+
+/* TABLES */
+table {
+    border-spacing: 5px;
+}
+
+table thead {
+    background-color: #5C6BC0;
+}
+
+/*table thead::before {
+    content: "";
+    top: 10px;
+    left: 5px;
+    right: 5px;
+    height: 48px;
+    background-color: #5C6BC0;
+    position: absolute;
+}*/
+
+table td, th {
+    text-align: left;
+    padding: 0px 20px;
+    height: 48px;
+    border-radius: 2px;
+}
+
+table th {
+    font-weight: 500;
+    color: white;
+}
+
+table td {
+    width: 1px;
+    background-color: #EEEEEE;
+    border-left: 2px solid black;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+table td:first-of-type {
+    font-weight: 500;
+}
+
+table tr:nth-child(2n) td {
+    background-color: lighten(#8BC34A, 40%);
+    color: darken(#8BC34A, 40%);
+    border-color: #8BC34A;
+}
+
+table tr:nth-child(2n+1) td {
+    background-color: lighten(#5C6BC0, 40%);
+    color: darken(#5C6BC0, 40%);
+    border-color: #5C6BC0;
+}
+
+/* Tooltip */
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    right: 50%;
+    transform: translateX(50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
