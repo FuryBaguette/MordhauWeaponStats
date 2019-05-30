@@ -138,20 +138,38 @@ $(function() {
         compareList = $.grep(compareList, function(value) {
             return value != name;
         });
+        $("#leftSide tr").each(function () {
+            var child = $(this).children().first();
+            if (child.text() == name)
+                child.removeClass("selectedItem");
+        });
         updateAllStats();
         $(this).remove();
     });
 
-    $(this).on('click', '#leftSide td', function() {
+    $(this).on('click', '#leftSide tr', function() {
+        var element = $(this).children().first();
         for (i in weapons) {
             var currentWeapon = weapons[i];
-            if (currentWeapon.Name == $(this).text()) {
-                compareList.push(currentWeapon.Name);
-                var weaponDiv = $('<div/>', { 'class': "weaponNameBox", 'data-name': currentWeapon.Name });
-                var weaponName = $('<span/>', { 'class': "weaponName" });
-                weaponName.text(currentWeapon.Name);
-                weaponDiv.append(weaponName);
-                $("#rightSide .selectedItemsContainer").append(weaponDiv);
+            if (currentWeapon.Name == element.text()) {
+                if (element.hasClass("selectedItem")) {
+                    compareList = $.grep(compareList, function(value) {
+                        return value != currentWeapon.Name;
+                    });
+                    $(".weaponNameBox").each(function (){
+                        if ($(this).data("name") == currentWeapon.Name)
+                            $(this).remove();
+                    });
+                    element.removeClass("selectedItem");
+                } else {
+                    compareList.push(currentWeapon.Name);
+                    var weaponDiv = $('<div/>', { 'class': "weaponNameBox", 'data-name': currentWeapon.Name });
+                    var weaponName = $('<span/>', { 'class': "weaponName" });
+                    weaponName.text(currentWeapon.Name);
+                    weaponDiv.append(weaponName);
+                    $("#rightSide .selectedItemsContainer").append(weaponDiv);
+                    element.addClass("selectedItem");
+                }
                 updateAllStats();
                 break;
             }

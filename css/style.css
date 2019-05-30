@@ -190,6 +190,10 @@ table tr:nth-child(2n+1) td {
     border-color: #5C6BC0;
 }
 
+table td.selectedItem {
+    background-color: #7aea71;
+}
+
 /* Tooltip */
 .tooltip .tooltiptext {
     visibility: hidden;
