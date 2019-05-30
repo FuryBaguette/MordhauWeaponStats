@@ -1,2 +1,2 @@
 # MordhauWeaponStats
-A Mordhau weapon stats comparison
+A Mordhau weapon stats comparison website - WIP
