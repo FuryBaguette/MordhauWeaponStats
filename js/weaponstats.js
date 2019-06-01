@@ -17,7 +17,7 @@ $(function() {
             }
         }
         weaponLeftTable.append(weaponLeftBody);
-        $("#leftSide").append(weaponLeftTable);
+        $("#leftSide .keepLong").append(weaponLeftTable);
     });
 
     function getWeaponData(name) {
@@ -170,28 +170,6 @@ $(function() {
         await updateArray("TurnCap", ["X", "Y"], ["X", "Y"]);
     }
 
-    $("#rightSide").droppable({
-        over: function (event, ui) {
-            $("#rightSide .overlay").show();
-        },
-        out: function () {
-            $("#rightSide .overlay").hide();
-        },
-        drop: function (event, ui) {
-            $("#rightSide .overlay").hide();
-            for (i in weapons) {
-                var currentWeapon = weapons[i];
-                if (currentWeapon.Name == ui.draggable.data("name")) {
-                    compareList.push(currentWeapon.Name);
-                    ui.draggable.attr("style", "");
-                    ui.draggable.draggable('disable');
-                    $("#rightSide .selectedItemsContainer").append(ui.draggable);
-                    updateAllStats();
-                }
-            }
-        }
-    });
-
     $(this).on('click', '#rightSide .weaponNameBox', function() {
         var name = $(this).data("name");
         compareList = $.grep(compareList, function(value) {
@@ -254,7 +232,7 @@ $(function() {
       }
     }
 
-    $(this).on('click', 'th', function() { //:not(.selectHead)
+    $(this).on('click', 'th', function() {
         var rows, shouldSwitch, i, x, y, switchCount = 0;
         var table = $(this).parents("table:first");
         var switching = true;
@@ -271,6 +249,28 @@ $(function() {
             } else {
                 $(this).addClass('asc');
                 sortTable($(this), table, 'asc');
+            }
+        }
+    });
+
+    $("#searchName").on('keyup', function() {
+        var td, textValue;
+        var input = $(this);
+        var table = $("#leftSide table");
+        var filter = input.val().toUpperCase();
+        var tr = table.find("tr");
+
+        for (i in tr) {
+            if ($(tr[i]).is("tr")) {
+                td = $(tr[i]).find("td").first();
+                if (td) {
+                    textValue = td.text();
+                    if (textValue.toUpperCase().indexOf(filter) >= 0) {
+                        $(tr[i]).show();
+                    }
+                    else
+                        $(tr[i]).hide();
+                }
             }
         }
     });

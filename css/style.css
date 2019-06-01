@@ -270,3 +270,15 @@ footer a {
 footer a, footer a:hover, footer a:active, footer a:visited {
     color: #374073;
 }
+
+.keepLong {
+    min-height: 4000px;
+}
+
+input {
+    height: 28px;
+    border: 2px solid #5C6BC0;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 2px;
+}
