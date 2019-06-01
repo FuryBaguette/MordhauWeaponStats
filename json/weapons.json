@@ -5737,6 +5737,21 @@
                     "AttackSpeed":2.6
                 }
             ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
+                }
+            ],
             "Misc":[
                 {
                     "MaxAmmo":12,
@@ -5783,6 +5798,21 @@
                     "Draw":1200,
                     "Reload":1000,
                     "AttackSpeed":2.2
+                }
+            ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
                 }
             ],
             "Misc":[
@@ -5833,6 +5863,21 @@
                     "AttackSpeed":1
                 }
             ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
+                }
+            ],
             "Misc":[
                 {
                     "MaxAmmo":2,
@@ -5879,6 +5924,21 @@
                     "Draw":750,
                     "Reload":800,
                     "AttackSpeed":1.55
+                }
+            ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
                 }
             ],
             "Misc":[
@@ -5929,6 +5989,21 @@
                     "AttackSpeed":0.8
                 }
             ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
+                }
+            ],
             "Misc":[
                 {
                     "MaxAmmo":4,
@@ -5975,6 +6050,21 @@
                     "Draw":600,
                     "Reload":400,
                     "AttackSpeed":1
+                }
+            ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
                 }
             ],
             "Misc":[
@@ -6025,6 +6115,21 @@
                     "AttackSpeed":0.95
                 }
             ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
+                }
+            ],
             "Misc":[
                 {
                     "MaxAmmo":1,
@@ -6071,6 +6176,21 @@
                     "Draw":550,
                     "Reload":400,
                     "AttackSpeed":0.95
+                }
+            ],
+            "Stamina":[
+                {
+                    "MissCost":"N/A",
+                    "FeintCost":"N/A",
+                    "MorphCost":"N/A",
+                    "StaminaDrain":"N/A",
+                    "ParryDrainNegation":"N/A"
+                }
+            ],
+            "TurnCap":[
+                {
+                    "X":"N/A",
+                    "Y":"N/A"
                 }
             ],
             "Misc":[
