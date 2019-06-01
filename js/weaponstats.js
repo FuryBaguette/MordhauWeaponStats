@@ -28,7 +28,7 @@ $(function() {
         return null;
     }
 
-    function updateValue(valueToUpdate) {
+    async function updateValue(valueToUpdate, bestPosition = 0) {
         $("#weapon" + valueToUpdate).remove();
         if (compareList.length > 0) {
             var weaponValueDiv = $('<div/>', { 'id': "weapon" + valueToUpdate, 'class': "infoContainer" });
@@ -51,12 +51,36 @@ $(function() {
                 weaponValueContainer.append(weaponValueText);
                 weaponValueTable.first().append(weaponValueContainer);
             }
+
+            if (bestPosition > 0 && compareList.length > 1) {
+                var min = null, max = null;
+                var j = 0;
+                var highestElem;
+                var lowestElem;
+                await weaponValueTable.find("td").each(function () {
+                    if (bestPosition == j) {
+                        var text = parseFloat($(this).text());
+                        if ((min===null) || (text < min)) { min = text; lowestElem = $(this).parent(); }
+                        if ((max===null) || (text > max)) { max = text; highestElem = $(this).parent(); }
+                        j = 0;
+                    } else
+                        j++;
+                });
+                if (min) {
+                    lowestElem.removeClass("highestValueItems");
+                    lowestElem.addClass("lowestValueItems");
+                }
+                if (max) {
+                    highestElem.removeClass("lowestValueItems");
+                    highestElem.addClass("highestValueItems");
+                }
+            }
             weaponValueDiv.append(weaponValueTable);
             $("#rightSide").append(weaponValueDiv);
         }
     }
 
-    function updateArray(value, keys) {
+    async function updateArray(value, keys, valuesToCalc = null, reverse = false) {
         $("#weapon" + value).remove();
         if (compareList.length > 0) {
             var weaponArrayDiv = $('<div/>', { 'id': "weapon" + value, 'class': "infoContainer" });
@@ -91,24 +115,59 @@ $(function() {
                 }
                 weaponArrayTable.first().append(weaponArrayContainer);
             }
+
+            if (valuesToCalc != null && compareList.length > 1) {
+                var min = null, max = null;
+                var highestElem;
+                var lowestElem;
+
+                await weaponArrayTable.find("tr").each(function () {
+                    var currentWeaponName = $(this).children().first().text();
+                    var sum = 0;
+                    $.each(weapons, function() {
+                        var tmp = $(this);
+                        var currentWeapon = tmp[0];
+                        if (currentWeapon.Name == currentWeaponName) {
+                            for (j in valuesToCalc)
+                                sum += currentWeapon[value][0][valuesToCalc[j]];
+                        }
+                    });
+                    sum /= valuesToCalc.length + 1;
+                    if (reverse) {
+                        if ((min===null) || (sum > min)) { min = sum; lowestElem = $(this); }
+                        if ((max===null) || (sum < max)) { max = sum; highestElem = $(this); }
+                    } else {
+                        if ((min===null) || (sum < min)) { min = sum; lowestElem = $(this); }
+                        if ((max===null) || (sum > max)) { max = sum; highestElem = $(this); }
+                    }
+                });
+                if (min) {
+                    lowestElem.removeClass("highestValueItems");
+                    lowestElem.addClass("lowestValueItems");
+                }
+                if (max) {
+                    highestElem.removeClass("lowestValueItems");
+                    highestElem.addClass("highestValueItems");
+                }
+            }
             weaponArrayDiv.append(weaponArrayTable);
             $("#rightSide").append(weaponArrayDiv);
         }
     }
 
-    function updateAllStats() {
+    async function updateAllStats() {
         updateValue("AttackType");
         updateValue("Type");
-        updateValue("PointCost");
-        updateValue("DPS");
-        updateValue("Length");
-        updateArray("Speed", ["Windup", "Combo", "Release", "AttackSpeed", "ComboSpeed"]);
-        updateArray("NoArmorDamage", ["Head", "Torso", "Legs"]);
-        updateArray("LightArmorDamage", ["Head", "Torso", "Legs"]);
-        updateArray("MediumArmorDamage", ["Head", "Torso", "Legs"]);
-        updateArray("HeavyArmorDamage", ["Head", "Torso", "Legs"]);
-        updateArray("Stamina", ["MissCost", "FeintCost", "MorphCost", "StaminaDrain", "ParryDrainNegation"]);
-        updateArray("TurnCap", ["X", "Y"]);
+        await updateValue("PointCost", 1);
+        await updateValue("DPS", 1);
+        await updateValue("Length", 1);
+        await updateArray("Speed", ["Windup", "Combo", "Release", "AttackSpeed", "ComboSpeed"], ["Windup", "Release"], true);
+        await updateArray("NoArmorDamage", ["Head", "Torso", "Legs"], ["Head", "Torso", "Legs"]);
+        await updateArray("LightArmorDamage", ["Head", "Torso", "Legs"], ["Head", "Torso", "Legs"]);
+        await updateArray("MediumArmorDamage", ["Head", "Torso", "Legs"], ["Head", "Torso", "Legs"]);
+        await updateArray("HeavyArmorDamage", ["Head", "Torso", "Legs"], ["Head", "Torso", "Legs"]);
+        await updateArray("Stamina", ["MissCost", "FeintCost", "MorphCost", "StaminaDrain", "ParryDrainNegation"], ["MissCost", "FeintCost", "MorphCost", "StaminaDrain", "ParryDrainNegation"], true);
+        await updateArray("TurnCap", ["X", "Y"], ["X", "Y"]);
     }
 
     $("#rightSide").droppable({
@@ -195,7 +254,7 @@ $(function() {
       }
     }
 
-    $(this).on('click', 'th', function() {
+    $(this).on('click', 'th', function() { //:not(.selectHead)
         var rows, shouldSwitch, i, x, y, switchCount = 0;
         var table = $(this).parents("table:first");
         var switching = true;

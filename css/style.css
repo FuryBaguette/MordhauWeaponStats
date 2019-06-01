@@ -60,7 +60,7 @@ footer {
 
 #content {
     overflow: hidden;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
     border-radius: 2px;
     display: flex;
 }
@@ -84,6 +84,7 @@ footer {
 #rightSide .selectedItemsContainer {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
 
 .weaponNameBox {
@@ -144,18 +145,12 @@ table thead {
     background-color: #5C6BC0;
 }
 
-/*table thead::before {
-    content: "";
-    top: 10px;
-    left: 5px;
-    right: 5px;
-    height: 48px;
-    background-color: #5C6BC0;
-    position: absolute;
-}*/
-
 table tr, table th, .weaponNameBox {
     cursor: pointer;
+}
+
+#rightSide table td {
+    cursor: auto;
 }
 
 table td, th {
@@ -163,11 +158,20 @@ table td, th {
     padding: 0px 20px;
     height: 48px;
     border-radius: 2px;
+    transition: all 150ms ease-in;
 }
 
 table th {
     font-weight: 500;
     color: white;
+}
+
+table th:hover {
+    background-color: #374073;
+}
+
+#leftSide table tr:hover td {
+    background-color: #c1c1c1;
 }
 
 table td {
@@ -196,6 +200,22 @@ table tr:nth-child(2n+1) td {
 
 table td.selectedItem {
     background-color: #7aea71;
+}
+
+table td.highestValueItem {
+    background-color: #7aea71;
+}
+
+table td.lowestValueItem {
+    background-color: #ff7e7e;
+}
+
+table tr.highestValueItems td {
+    background-color: #7aea71;
+}
+
+table tr.lowestValueItems td {
+    background-color: #ff7e7e;
 }
 
 /* Tooltip */
@@ -230,4 +250,16 @@ table td.selectedItem {
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+.howto {
+    color: #5C6BC0;
+}
+
+footer a {
+    font-weight: bold;
+}
+
+footer a, footer a:hover, footer a:active, footer a:visited {
+    color: #374073;
 }
