@@ -28,7 +28,7 @@ $(function() {
         return null;
     }
 
-    async function updateValue(valueToUpdate, bestPosition = 0) {
+    async function updateValue(valueToUpdate, bestPosition = 0, reverse = false) {
         $("#weapon" + valueToUpdate).remove();
         if (compareList.length > 0) {
             var weaponValueDiv = $('<div/>', { 'id': "weapon" + valueToUpdate, 'class': "infoContainer" });
@@ -60,8 +60,13 @@ $(function() {
                 await weaponValueTable.find("td").each(function () {
                     if (bestPosition == j) {
                         var text = parseFloat($(this).text());
-                        if ((min===null) || (text < min)) { min = text; lowestElem = $(this).parent(); }
-                        if ((max===null) || (text > max)) { max = text; highestElem = $(this).parent(); }
+                        if (reverse) {
+                            if ((min===null) || (text > min)) { min = text; lowestElem = $(this).parent(); }
+                            if ((max===null) || (text < max)) { max = text; highestElem = $(this).parent(); }
+                        } else {
+                            if ((min===null) || (text < min)) { min = text; lowestElem = $(this).parent(); }
+                            if ((max===null) || (text > max)) { max = text; highestElem = $(this).parent(); }
+                        }
                         j = 0;
                     } else
                         j++;
@@ -158,7 +163,7 @@ $(function() {
     async function updateAllStats() {
         updateValue("AttackType");
         updateValue("Type");
-        await updateValue("PointCost", 1);
+        await updateValue("PointCost", 1, true);
         await updateValue("DPS", 1);
         await updateValue("Length", 1);
         await updateArray("Speed", ["Windup", "Combo", "Release", "AttackSpeed", "ComboSpeed"], ["Windup", "Release"], true);
