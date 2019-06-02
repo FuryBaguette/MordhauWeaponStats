@@ -33,7 +33,7 @@ $(function() {
         if (compareList.length > 0) {
             var weaponValueDiv = $('<div/>', { 'id': "weapon" + valueToUpdate, 'class': "infoContainer" });
             var weaponValueTable = $('<table/>')
-            weaponValueDiv.append("<div class=\"title-box\"><h4>" + valueToUpdate.split(/(?=[A-Z])/).join(" ") + "</h4></div>");
+            weaponValueDiv.append("<div class=\"title-box\"><h2>" + valueToUpdate.split(/(?=[A-Z])/).join(" ") + "</h2></div>");
             var weaponValue;
             var tableHead = $("<thead/>");
             tableHead.append("<th>Name</th><th>Value</th>");
@@ -90,7 +90,7 @@ $(function() {
         if (compareList.length > 0) {
             var weaponArrayDiv = $('<div/>', { 'id': "weapon" + value, 'class': "infoContainer" });
             var weaponArrayTable = $('<table/>');
-            weaponArrayDiv.append("<div class=\"title-box\"><h4>" + value.split(/(?=[A-Z])/).join(" ") + "</h4></div>");
+            weaponArrayDiv.append("<div class=\"title-box\"><h2>" + value.split(/(?=[A-Z])/).join(" ") + "</h2></div>");
             var weaponArray;
             var tableHead = $("<thead/>");
             tableHead.append("<th>Name</th>");

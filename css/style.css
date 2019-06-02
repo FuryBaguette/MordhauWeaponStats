@@ -9,6 +9,7 @@ body {
     height: 100%;
     min-height: 100vh;
     overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 #container {
@@ -22,6 +23,13 @@ h1 {
     margin: 0;
     flex: 1;
 }
+
+h2 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+/* HEADER */
 
 header {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
@@ -47,6 +55,8 @@ header .links i {
     font-size: 30px;
 }
 
+/* FOOTER */
+
 footer {
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.5);
     border-radius: 2px;
@@ -57,6 +67,16 @@ footer {
     color: white;
     text-align: center;
 }
+
+footer a {
+    font-weight: bold;
+}
+
+footer a, footer a:hover, footer a:active, footer a:visited {
+    color: #374073;
+}
+
+/* CONTENT */
 
 #content {
     overflow: hidden;
@@ -101,6 +121,10 @@ footer {
     z-index: 5;
 }
 
+.weaponNameBox span.weaponName {
+    font-size: 14px;
+}
+
 #leftSide .overlay,
 #rightSide .overlay {
     position: absolute;
@@ -142,10 +166,21 @@ footer {
     border-radius: 2px;
 }
 
+#leftSide .searchDiv {
+    display: flex;
+}
+
+#leftSide select {
+    border: 2px solid #5C6BC0;
+    padding: 5px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
 /* TABLES */
 table {
     border-spacing: 5px;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 table thead {
@@ -225,7 +260,7 @@ table tr.lowestValueItems td {
     background-color: #ff7e7e;
 }
 
-/* Tooltip */
+/* TOOLTIP */
 .tooltip .tooltiptext {
     visibility: hidden;
     width: 80px;
@@ -259,16 +294,10 @@ table tr.lowestValueItems td {
     opacity: 1;
 }
 
+/* MISC */
+
 .howto {
     color: #5C6BC0;
-}
-
-footer a {
-    font-weight: bold;
-}
-
-footer a, footer a:hover, footer a:active, footer a:visited {
-    color: #374073;
 }
 
 .keepLong {
@@ -279,17 +308,6 @@ input {
     height: 28px;
     border: 2px solid #5C6BC0;
     margin-left: 5px;
-    padding: 5px;
-    border-radius: 2px;
-    margin-right: 10px;
-}
-
-#leftSide .searchDiv {
-    display: flex;
-}
-
-#leftSide select {
-    border: 2px solid #5C6BC0;
     padding: 5px;
     border-radius: 2px;
     margin-right: 10px;
