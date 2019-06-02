@@ -313,6 +313,11 @@ input {
     margin-right: 10px;
 }
 
+img.logo {
+    height: 36px;
+    margin-right: 15px;
+}
+
 @media only screen and (max-width: 1200px) {
     #content {
         flex-direction: column;
