@@ -6,6 +6,15 @@
         <meta name="keywords" content="mordhau,weapon,stats,comparison">
         <meta name="author" content="FuryBaguette">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141261841-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-141261841-2');
+        </script>
+
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
         <script src="js/weaponstats.js"></script>
@@ -24,7 +33,27 @@
             <div id="content">
                 <div id="leftSide">
                     <div class="overlay"></div>
-                    <input type="text" id="searchName" placeholder="Search by name">
+                    <div class="searchDiv">
+                        <input type="search" id="searchName" placeholder="Search by name">
+                        <select id="attackTypeSelect">
+                            <option value="">--Attack Type--</option>
+                            <option value="Strike">Strike</option>
+                            <option value="Thrust">Thrust</option>
+                            <option value="Projectile">Projectile</option>
+                        </select>
+                        <select id="typeSelect">
+                            <option value="">--Type--</option>
+                            <option value="One Handed">One Handed</option>
+                            <option value="Two Handed">Two Handed</option>
+                            <option value="One/Two Handed">One/Two Handed</option>
+                        </select>
+                        <select id="altModeSelect">
+                            <option value="">--Alt Mode--</option>
+                            <option value="On">On</option>
+                            <option value="Off">Off</option>
+                            <option value="Projectile">Projectile</option>
+                        </select>
+                    </div>
                     <div class="keepLong"></div>
                 </div>
                 <div id="rightSide">

@@ -258,16 +258,16 @@ $(function() {
         }
     });
 
-    $("#searchName").on('keyup', function() {
+    function sortBySearch(elem, nb) {
         var td, textValue;
-        var input = $(this);
+        var input = elem;
         var table = $("#leftSide table");
         var filter = input.val().toUpperCase();
         var tr = table.find("tr");
 
         for (i in tr) {
             if ($(tr[i]).is("tr")) {
-                td = $(tr[i]).find("td").first();
+                td = $(tr[i]).find("td").eq(nb);
                 if (td) {
                     textValue = td.text();
                     if (textValue.toUpperCase().indexOf(filter) >= 0) {
@@ -278,5 +278,21 @@ $(function() {
                 }
             }
         }
+    }
+
+    $("#searchName").on('keyup search', function() {
+        sortBySearch($(this), 0);
+    });
+
+    $("#attackTypeSelect").change(function () {
+        sortBySearch($(this), 1);
+    });
+
+    $("#typeSelect").change(function () {
+        sortBySearch($(this), 2);
+    });
+
+    $("#altModeSelect").change(function () {
+        sortBySearch($(this), 3);
     });
 });

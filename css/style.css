@@ -281,4 +281,26 @@ input {
     margin-left: 5px;
     padding: 5px;
     border-radius: 2px;
+    margin-right: 10px;
+}
+
+#leftSide .searchDiv {
+    display: flex;
+}
+
+#leftSide select {
+    border: 2px solid #5C6BC0;
+    padding: 5px;
+    border-radius: 2px;
+    margin-right: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+    #content {
+        flex-direction: column;
+    }
+
+    #leftSide {
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+    }
 }
