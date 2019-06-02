@@ -95,7 +95,7 @@ $(function() {
             var tableHead = $("<thead/>");
             tableHead.append("<th>Name</th>");
             for (i in keys) {
-                tableHead.append("<th>" + keys[i] + "</th>");
+                tableHead.append("<th>" + keys[i].split(/(?=[A-Z])/).join(" ") + "</th>");
             }
             weaponArrayTable.append(tableHead);
             weaponArrayTable.append($('<tbody/>'));
@@ -219,14 +219,11 @@ $(function() {
     });
 
     function sortTable(th, table, order){
-      var rows = table.find('tr').toArray().sort(compare($(th).index()));
-      if(order == 'desc') {
-        rows.reverse();
-      }
-      for(var i=0; i < rows.length; i++){
-        table.append(rows[i]);
-      }
-
+        var rows = table.find('tr').toArray().sort(compare($(th).index()));
+        if(order == 'desc')
+            rows.reverse();
+        for(i in rows)
+            table.append(rows[i]);
     }
 
     function compare(index){
@@ -258,19 +255,29 @@ $(function() {
         }
     });
 
-    function sortBySearch(elem, nb) {
+    function sortBySearch() {
+        // uurk, yeah this will need to be dynamic
         var td, textValue;
-        var input = elem;
         var table = $("#leftSide table");
-        var filter = input.val().toUpperCase();
+        var filter = $("#searchName").val().toUpperCase();
+        var filter1 = $("#attackTypeSelect").val().toUpperCase();
+        var filter2 = $("#typeSelect").val().toUpperCase();
+        var filter3 = $("#altModeSelect").val().toUpperCase();
         var tr = table.find("tr");
 
         for (i in tr) {
             if ($(tr[i]).is("tr")) {
-                td = $(tr[i]).find("td").eq(nb);
+                allTd = $(tr[i]).find("td");
+                td = allTd.eq(0);
+                td1 = allTd.eq(1);
+                td2 = allTd.eq(2);
+                td3 = allTd.eq(3);
                 if (td) {
-                    textValue = td.text();
-                    if (textValue.toUpperCase().indexOf(filter) >= 0) {
+                    textValue = td.text().toUpperCase();
+                    textValue1 = td1.text().toUpperCase();
+                    textValue2 = td2.text().toUpperCase();
+                    textValue3 = td3.text().toUpperCase();
+                    if (textValue.indexOf(filter) >= 0 && textValue1.indexOf(filter1) >= 0 && textValue2.indexOf(filter2) >= 0 && textValue3.indexOf(filter3) >= 0) {
                         $(tr[i]).show();
                     }
                     else
@@ -281,18 +288,10 @@ $(function() {
     }
 
     $("#searchName").on('keyup search', function() {
-        sortBySearch($(this), 0);
+        sortBySearch();
     });
 
-    $("#attackTypeSelect").change(function () {
-        sortBySearch($(this), 1);
-    });
-
-    $("#typeSelect").change(function () {
-        sortBySearch($(this), 2);
-    });
-
-    $("#altModeSelect").change(function () {
-        sortBySearch($(this), 3);
+    $("#attackTypeSelect, #typeSelect, #altModeSelect").change(function () {
+        sortBySearch();
     });
 });
