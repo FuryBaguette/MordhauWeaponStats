@@ -46,7 +46,7 @@ $(function() {
                 weaponValueText = $('<td/>');
                 var weaponData = getWeaponData(compareList[i]);
                 weaponValueWeaponName.text(weaponData.Name);
-                weaponValueText.text(weaponData[valueToUpdate]);
+                weaponValueText.text((weaponData[valueToUpdate]) ? weaponData[valueToUpdate] : "N/A");
                 weaponValueContainer.append(weaponValueWeaponName);
                 weaponValueContainer.append(weaponValueText);
                 weaponValueTable.first().append(weaponValueContainer);
@@ -107,16 +107,17 @@ $(function() {
                 weaponArrayWeaponName.text(weaponData.Name);
                 weaponArrayContainer.append(weaponArrayWeaponName);
                 for (i in keys) {
+                    textAdd = (weaponData[value][0][keys[i]]) ? weaponData[value][0][keys[i]] : "N/A";
                     if (value == "Speed") {
-                        if (i <= 2 && weaponData[value][0][keys[i]] != "N/A")
-                            weaponArrayContainer.append($('<td/>').text(weaponData[value][0][keys[i]] + " ms"));
-                        else if (weaponData[value][0][keys[i]] != "N/A")
-                            weaponArrayContainer.append($('<td/>').text(weaponData[value][0][keys[i]] + " s"));
+                        if (i <= 2 && textAdd != "N/A")
+                            weaponArrayContainer.append($('<td/>').text(textAdd + " ms"));
+                        else if (textAdd != "N/A")
+                            weaponArrayContainer.append($('<td/>').text(textAdd + " s"));
                         else
-                            weaponArrayContainer.append($('<td/>').text(weaponData[value][0][keys[i]]));
+                            weaponArrayContainer.append($('<td/>').text(textAdd));
                     }
                     else
-                        weaponArrayContainer.append($('<td/>').text(weaponData[value][0][keys[i]]));
+                        weaponArrayContainer.append($('<td/>').text(textAdd));
                 }
                 weaponArrayTable.first().append(weaponArrayContainer);
             }
@@ -282,28 +283,6 @@ $(function() {
                     $(this).hide();
             }
         });
-
-        /*for (i in tr) {
-            console.log(i);
-            if ($(tr[i]).is("tr")) {
-                allTd = $(tr[i]).find("td");
-                td = allTd.eq(0);
-                td1 = allTd.eq(1);
-                td2 = allTd.eq(2);
-                td3 = allTd.eq(3);
-                if (td) {
-                    textValue = td.text();
-                    textValue1 = td1.text();
-                    textValue2 = td2.text();
-                    textValue3 = td3.text();
-                    if (textValue.indexOf(filter) >= 0 && textValue1.indexOf(filter1) >= 0 && textValue2.indexOf(filter2) >= 0 && textValue3.indexOf(filter3) >= 0) {
-                        $(tr[i]).show();
-                    }
-                    else
-                        $(tr[i]).hide();
-                }
-            }
-        }*/
     }
 
     $("#searchName").on('keyup search', function() {
