@@ -260,10 +260,10 @@ $(function() {
         // uurk, yeah this will need to be dynamic
         var td, textValue;
         var table = $("#leftSide table");
-        var filter = $("#searchName").val();
-        var filter1 = $("#attackTypeSelect").val();
-        var filter2 = $("#typeSelect").val();
-        var filter3 = $("#altModeSelect").val();
+        var filter = $("#searchName").val().toUpperCase();
+        var filter1 = $("#attackTypeSelect").val().toUpperCase();
+        var filter2 = $("#typeSelect").val().toUpperCase();
+        var filter3 = $("#altModeSelect").val().toUpperCase();
         var tr = table.find("tr");
 
         $.each(tr, function() {
@@ -273,10 +273,10 @@ $(function() {
             td2 = allTd.eq(2);
             td3 = allTd.eq(3);
             if (td) {
-                textValue = td.text();
-                textValue1 = td1.text();
-                textValue2 = td2.text();
-                textValue3 = td3.text();
+                textValue = td.text().toUpperCase();
+                textValue1 = td1.text().toUpperCase();
+                textValue2 = td2.text().toUpperCase();
+                textValue3 = td3.text().toUpperCase();
                 if (textValue.indexOf(filter) >= 0 && textValue1.indexOf(filter1) >= 0 && textValue2.indexOf(filter2) >= 0 && textValue3.indexOf(filter3) >= 0)
                     $(this).show();
                 else
