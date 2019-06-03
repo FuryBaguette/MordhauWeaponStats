@@ -13,7 +13,7 @@ $(function() {
         for (i in weapons) {
             var currentWeapon = weapons[i];
             if (currentWeapon.Name) {
-                weaponLeftBody.append("<tr><td>" + currentWeapon.Name + "</td><td>" + currentWeapon.AttackType + "</td><td>" + currentWeapon.Type + "</td><td>" + currentWeapon.AltMode + "</td></tr>");
+                weaponLeftBody.append("<tr><td>" + ((currentWeapon.Name) ? currentWeapon.Name : "N/A") + "</td><td>" + ((currentWeapon.AttackType) ? currentWeapon.AttackType : "N/A") + "</td><td>" + ((currentWeapon.Type) ? currentWeapon.Type : "N/A") + "</td><td>" + ((currentWeapon.AltMode) ? currentWeapon.AltMode : "N/A") + "</td></tr>");
             }
         }
         weaponLeftTable.append(weaponLeftBody);
@@ -259,13 +259,32 @@ $(function() {
         // uurk, yeah this will need to be dynamic
         var td, textValue;
         var table = $("#leftSide table");
-        var filter = $("#searchName").val().toUpperCase();
-        var filter1 = $("#attackTypeSelect").val().toUpperCase();
-        var filter2 = $("#typeSelect").val().toUpperCase();
-        var filter3 = $("#altModeSelect").val().toUpperCase();
+        var filter = $("#searchName").val();
+        var filter1 = $("#attackTypeSelect").val();
+        var filter2 = $("#typeSelect").val();
+        var filter3 = $("#altModeSelect").val();
         var tr = table.find("tr");
 
-        for (i in tr) {
+        $.each(tr, function() {
+            allTd = $(this).find("td");
+            td = allTd.eq(0);
+            td1 = allTd.eq(1);
+            td2 = allTd.eq(2);
+            td3 = allTd.eq(3);
+            if (td) {
+                textValue = td.text();
+                textValue1 = td1.text();
+                textValue2 = td2.text();
+                textValue3 = td3.text();
+                if (textValue.indexOf(filter) >= 0 && textValue1.indexOf(filter1) >= 0 && textValue2.indexOf(filter2) >= 0 && textValue3.indexOf(filter3) >= 0)
+                    $(this).show();
+                else
+                    $(this).hide();
+            }
+        });
+
+        /*for (i in tr) {
+            console.log(i);
             if ($(tr[i]).is("tr")) {
                 allTd = $(tr[i]).find("td");
                 td = allTd.eq(0);
@@ -273,10 +292,10 @@ $(function() {
                 td2 = allTd.eq(2);
                 td3 = allTd.eq(3);
                 if (td) {
-                    textValue = td.text().toUpperCase();
-                    textValue1 = td1.text().toUpperCase();
-                    textValue2 = td2.text().toUpperCase();
-                    textValue3 = td3.text().toUpperCase();
+                    textValue = td.text();
+                    textValue1 = td1.text();
+                    textValue2 = td2.text();
+                    textValue3 = td3.text();
                     if (textValue.indexOf(filter) >= 0 && textValue1.indexOf(filter1) >= 0 && textValue2.indexOf(filter2) >= 0 && textValue3.indexOf(filter3) >= 0) {
                         $(tr[i]).show();
                     }
@@ -284,7 +303,7 @@ $(function() {
                         $(tr[i]).hide();
                 }
             }
-        }
+        }*/
     }
 
     $("#searchName").on('keyup search', function() {
